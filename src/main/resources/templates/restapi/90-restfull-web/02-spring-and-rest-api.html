@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+<h1>스프링 개념과 REST API</h1>
+  <section>
+    <h2>SPRING PATTERN</h2>
+    <h3>스프링은 제어역전(IOC), 의존성 주입(DI), 관점지향 프로그래밍(AOP)을 지원</h3>
+    <H3>IOC</H3>
+    <P>전통적인 프로그램에서는 코드가 하나씩 순차적으로 실행되나, UI 기반의 응용 프로그램은 사용자 입력과 이벤트를 기반으로 프로그램의 흐름이 결정되는 동적인 방법</P>
+    <P>이를 위해 프레임워크나 컴포넌트 같은 외부 소스가 프로그램의 제어 흐름을 경정하도록 바꾸는 방법이 필요했고 이것을 IOC라고 한다. 현재 IOC 매우 일반적인 원칙이자 거의 모든 프래임워크의 일부이다.</P>
+    <h3>DI</h3>
+    <p>DI는 IoC의 한 타입니다. IoC 컨테이너는 구현 객체를 만들고 유지관리한다. 이러한 타입의 객체(다른 객체가 필요로 하는 객체-일종의 의존성)는 그 객체를 필요로 하는 객체의 생성자, 설정자 또는 인터펭스 안에서 주입된다.</p>
+    <h3>AOP</h3>
+    <p>로깅, 보안, 트랜젝션 관리, 메트릭과 같은 기능은 여러 클래스/모듈에서 필요하다. 이러한 기능의 코드는 여러 크래스에 나뉘어 있다. 이러한 cross-cutting conserns를 위해 AOP를 통해 구현 가능</p>
+  </section>
+  <section>
+    <h2>전반적으로 내용을 이해하지 못함...</h2>
+    <h3>나중에 이해햐면 다시 정리</h3>
+  </section>
+  <section>
+    <h2>자바를 사용하여 bean 설정</h2>
+    <h3>@Import annotation</h3>
+    <p>둘 이상의 설정 클래스가 있는 경우 설정을 모듈화하는 데 사용. @Import 애노테이션은 자동 설정된 클래스들에서 bean의 정의를 가져오므로 컨텍스트를 수동으로 인스턴스화할 때 유용</p>
+    <h3>@DependsOn annotation</h3>
+    <p>bean의 초기화 순서를 관리</p>
+<pre>
+@Configuration
+public class AppConfig {
+  @Bean
+  public FooBean fooBean() { return new FooBean(); }
+  @Bean
+  public BarBean barBean() { return new BarBean(); }
+  @Bean
+  @DependsOn({ "fooBean", "barBean" })
+  public BazBean bazBean() { return new BazBean(); }
+  }</pre>
+  </section>
+  <section>
+    <h2>DI 코딩 방법</h2>
+    <p>생성자 주입, 설정자 메소드 주입, 클래스 프로퍼티를 사용한 주입 </p>
+    <h3>생성자 사용</h3>
+<pre>
+  @Configuration
+  public class AppConfig {
+    @Bean
+    public CartRepository cartRepository() {
+      return new CartRepositoryImpl();
+    }
+    @Bean
+    public CartService cartService() {
+      return new CartService(cartRepository);
+    }
+  }</pre>
+    <h3>설정자 메서드</h3>
+<pre>
+  public class CartService {
+    private CartRepository repository;
+    public void setCartRepository(CartRepository repository){
+      this.repository = repository;
+    }
+  }  </pre>
+    <h3>클래스 프로퍼티를 사용</h3>
+<pre>
+@Service
+  public class CartService {
+    @Autowired
+    private CartRepository repository;
+  }</pre>
+  </section>
+  <section>
+    <h2>@Value</h2>
+<pre>
+  @Configuration
+  @PropertySource("classpath:application.properties")
+  public class AppConfig {}
+  @Controller
+  public class CartController {
+    @value("${default.currency}")
+    String defaultCurrency;
+  }</pre>
+  </section>
+  <section>
+    <h2>AOP 예제</h2>
+    <h3>메소드를 대상으로 하는 애노테이션(TimeMonitor)를 정의</h3>
+<pre>
+  @Target(ElementType.METHOD)
+  @Retention(RetentionPolicy.RUNTIME)
+  public @interface TimeMonitor{}</pre>
+    <h3>Aspect를 정의</h3>
+<pre>
+  @Aspect
+  @Conponent
+  public class TimeMonitorAspect {
+    @Around("@annotation(com.pac.modern.api.TimeMonitor)")
+    public Objcet logTime(ProceedingJoinPoint joinPoint) throws Throwable {
+      long start = System.currentTimeMillis();
+      Object prceed = joinPoint.proceed();
+      long  exTime =System.currentTimeMillis() - start;
+      System.out.println(joinPoint.getSignature() + tasks:"+ exTime +" ms");
+    }
+  }
+</pre>
+    <h3>Around, Before, After, AfterReturning, AfterThrowing</h3>
+    <h3>사용</h3>
+<pre>
+  class Test {
+    @TimeMonitor
+    public void performSomeTask() {
+      // 비즈니스 로직
+    }
+  }
+</pre>
+  </section>
+</main>
+</body>
+</html>

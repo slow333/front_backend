@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+<h1>Spring boot 구조 소개</h1>
+  <section>
+    <pre>
+      spring boot | Spring Data | Spring Security | Spring Cloud | ...
+      |                Spring Framework                              |
+      |                     Testing                                  |
+      |                IoC Container                                 |
+    </pre>
+    <h2>Spring Framework</h2>
+    <p>Messaging, AOP, Transactional Data and Persistence, Spring MVC Web Framework,
+    Spring WebFlux Reactive Web Framework, ...</p>
+    <h2>Ioc, Inversion of Control Container</h2>
+    <p>Beans, Context, Core, SpEL</p>
+    <p>The process of an object itself controlling the instantiation or location of its dependencies(objects it works with) is inverted.
+    The control is moved away from this object to the IoC container.</p>
+    <p>The Spring Framework uses a technique called dependency injection(DI) to implement the idea of IoC</p>
+  </section>
+  <section>
+    <h2>Spring boot</h2>
+    <p>The Spring Framework requires loads of configuration to get started.</p>
+    <p>Spring Boot extends the Spring Framework and provides a quick way to create a production-ready Spring-based application.</p>
+  </section>
+  <section>
+    <h2>start.spring.io ; 에서 프로젝트 생성</h2>
+    <p>build; maven으로 함. java version; 17, 필요한 dependency 설치(일단 security 제외)</p>
+    <h2>프로젝트 기본 구조</h2>
+    <p>src 밑에 main과 test가 있음</p>
+    <p>resources 밑에 html(js, css 포함)을 넣으면 rest가 아닌 프로젝트를 생성하면 여기서 파일을 불러와서 적용 가능</p>
+    <p>이때 web template을 설치해야함(thymleaf)</p>
+    <h2>application.properties(or yml)에 프로젝트 수행에 관련된 설정을 함(내용이 많음)</h2>
+  </section>
+</main>
+</body>
+</html>
