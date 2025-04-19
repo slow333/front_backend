@@ -2,7 +2,7 @@ package spring.frontend_backend.rest.dao;
 
 import spring.frontend_backend.rest.data.ProductEntity;
 import spring.frontend_backend.rest.repository.ProductRepository;
-import spring.frontend_backend.utils.exceptions.DataNotFoundException;
+import spring.frontend_backend.system.exceptions.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

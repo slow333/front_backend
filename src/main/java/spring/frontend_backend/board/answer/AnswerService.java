@@ -2,7 +2,7 @@ package spring.frontend_backend.board.answer;
 
 import spring.frontend_backend.board.question.Question;
 import spring.frontend_backend.board.user.UserInfor;
-import spring.frontend_backend.utils.exceptions.DataNotFoundException;
+import spring.frontend_backend.system.exceptions.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

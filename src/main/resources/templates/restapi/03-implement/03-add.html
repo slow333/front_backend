@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+  <h1>add</h1>
+  <h3>add는 controller에서 받을 때 @RequestBody DtoObject dto로 받음</h3>
+  <h4>이러면 spring에서 자동으로 json을 java 객체로 변환해서 전달함 </h4>
+  <h3>artifact의 id를 생성하기 위해 IdWorker를 생성해서 주입해야함</h3>
+  <h4>IdWoker 생성 → Application에서 @Bean을 만들어줌</h4>
+  <pre>
+    @Bean
+    public IdWorker idWorker() {
+      return new IdWorker(1,1);
+    }
+  </pre>
+  <h2>service test</h2>
+  <h3>given에 넣어줄 객체 생성 </h3>
+  <h3>idWorker를 사용하므로 @Mock해주고 given에 주입해주어야 함</h3>
+  <h3>given(idWorker.nextId()).willReturn(1234456L); // idWorker는 long을 return함</h3>
+  <h3>구현시 artifact.setId(idWorker.nexId() + ""); 필요</h3>
+  <h2>controller test</h2>
+  <h3>given에 넣어줄 dto 객체를 생성 → 객체를 json으로 변환(ObjectMapper)</h3>
+  <h3>given에서 service에 넣어줄 객체는 Mockito.any(Artifact.class)로 해줌</h3>
+  <h3>when에서 accept, contentType, content(json으로 변환한 string) 정의해서 받음</h3>
+  <pre>String json = objectMapper.wirteValueAsString(dto);</pre>
+
+  <h2>validation 구현: pom.xml에 관련 dependency 추가 필요</h2>
+  <h3>입력받는 dto 값의 적정성을 검증하기 위해 dto에 @NotEmpty(message="blaablass") 추가</h3>
+  <h3>controller의 @RequestBody 에도 @Valid 추가</h3>
+  <h3>이 애러는 controller에서 발생하므로 @RestControllerAdvice에 ExceptionHandler를 추가해야함</h3>
+  <pre>
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponsStatus(HttpStatus.BAD_REQUEST)
+    Result name(MethodArgumentNotValidException ex) {
+      List◁ObjectError▷ errors = ex.getBindingResult().getAllErrors();
+      Map[String, String] map = new HashMap[](errors.size());
+      errors.forEach(e - {
+        String key = ((FieldError) e).getField();
+        String value = error.getDefaultMessage();
+        map.put(key, value);
+      })
+      return new Result(false, StatusCode.BAD_REQUEST, "Provided arguments invalid.", map);
+    }
+  </pre>
+</main>
+</body>
+</html>

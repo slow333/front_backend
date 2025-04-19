@@ -35,7 +35,7 @@ body {
 }
 
 main {
-  padding: 50px 5px 0 194px;
+  padding: 50px 5px 0 202px;
   overflow: auto;
   margin:0 0 40px 0;
   height: auto;
@@ -44,6 +44,7 @@ main {
 main.nosub {
   padding: 50px 5px;
 }
+
 .no-aside {
   margin-top: 60px;
   margin-left: 17px;
@@ -89,7 +90,7 @@ h1:before {  content: "[ "; }
 h1:after {  content: " ]"; }
 h2, h3, h4, h5, h6 {
   font-weight: bolder;
-  margin: 7px 0;
+  margin: 7px 10px;
   text-align: left;
 }
 h2 {
@@ -98,15 +99,11 @@ h2 {
 }
 h3 {
   font-size: var(--h3);
-  margin: 7px 0 0 10px;
+  margin: 7px 0 0 18px;
   font-weight: bold;
   font-family: Roboto, "Noto Serif KR", serif;
 }
-h3:before {
-  content: "•";
-  padding-right: 8px;
-  color: var(--coloraccent);
-}
+
 h4, h5, h6  {
   font-size: var(--h4);
   font-weight: normal;
@@ -114,7 +111,7 @@ h4, h5, h6  {
   font-family: Roboto, "Noto Serif KR", serif;
 }
 h4:before {
-  content: "‣ ";
+  content: "• ";
   padding-left: 8px;
   color: #bd0000;
 }
@@ -241,6 +238,7 @@ tr, td, th {
   height: 100%;
   overflow-y: auto;
   transition: var(--transition);
+  background-color: white;
 }
 .aside .title {
   font-size: 20px;
@@ -255,7 +253,7 @@ tr, td, th {
 .aside > ul {
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 0 0 0 6px;
   margin-left: 0;
 }
 .aside > ul h2 {
@@ -268,13 +266,10 @@ tr, td, th {
 .aside > ul:hover h2{
   overflow:visible;
   white-space: normal;
-  height:auto;
 }
 .aside > ul h2:before {  content: ""; }
 .aside ul li {
   list-style: none;
-  padding: 0;
-  margin:0;
 }
 .aside ul li:hover {
   background-color: var(--colorbright);
@@ -284,17 +279,6 @@ tr, td, th {
   padding: 2px;
   margin:0;
 }
-/*.aside .sub{
-  color: var(--colorgray);
-  padding: 3px;
-  margin-bottom: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-.aside .sub:hover{
-  color: var(--coloraccent);
-  cursor: pointer;
-}*/
 
 .aside .content.active {  display: none; }
 .aside .content a{
@@ -313,17 +297,14 @@ tr, td, th {
   cursor: pointer;
   overflow:visible;
   white-space: normal;
-  height:auto;
   color: #fff;
   background-color: var(--coloraccent);
 }
-/*.aside .content a:before { content: "▸ "; }*/
 .aside a:link,
 .aside a:visited
 {
   text-decoration: none;
   color: var(--coloraccent);
-  font-weight: 400;
 }
 
 .aside a.currentUrl {
@@ -445,6 +426,7 @@ td > a {
     height: 40px;
   }
 }
+
 /* ====== paging ====== */
 .pagination{
   display: flex; justify-content: center;

@@ -1,7 +1,7 @@
 package spring.frontend_backend.board.question;
 
 import spring.frontend_backend.board.user.UserInfor;
-import spring.frontend_backend.utils.exceptions.DataNotFoundException;
+import spring.frontend_backend.system.exceptions.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

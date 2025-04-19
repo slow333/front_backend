@@ -1,6 +1,6 @@
 package spring.frontend_backend.board.user;
 
-import spring.frontend_backend.utils.exceptions.DataNotFoundException;
+import spring.frontend_backend.system.exceptions.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
