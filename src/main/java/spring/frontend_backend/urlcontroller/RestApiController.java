@@ -60,52 +60,42 @@ public class RestApiController {
     return "restapi/01-designProject/05-tdd-dev";
   }
 
-  @GetMapping("/01-designProject/03-OAS")
-  public String restOAS() {
-    return "restapi/01-designProject/06-OAS";
-  }
+  // @GetMapping("/01-designProject/03-OAS")
+  // public String restOAS() {
+  //   return "restapi/01-designProject/06-OAS";
+  // }
 
 
   //########## 2장 : 프로젝트 구성 및 설계 방식 #################
   //########## 3장 : 프로젝트 실제 코딩(TDD) #################
-  @GetMapping("/03-implement/01-dto-and-findById")
-  public String restDtoSetting() {
-    return "restapi/03-implement/01-dto-and-findById";
+  @GetMapping("/03-implement/01-CRUD")
+  public String restCRUE() {
+    return "restapi/03-implement/01-CRUD";
   }
 
-  @GetMapping("/03-implement/02-findAll")
-  public String restfindAll() {
-    return "restapi/03-implement/02-findAll";
-  }
-
-  @GetMapping("/03-implement/03-add")
-  public String restAddSave() {
-    return "restapi/03-implement/03-add";
-  }
-  @GetMapping("/03-implement/04-update")
-  public String restUpdate() {
-    return "restapi/03-implement/04-update";
-  }
-
-  @GetMapping("/03-implement/05-delete")
-  public String restDelete() {
-    return "restapi/03-implement/05-delete";
-  }
-  @GetMapping("/03-implement/06-refac")
+  @GetMapping("/03-implement/02-refac")
   public String restRefac() {
-    return "restapi/03-implement/06-refac";
+    return "restapi/03-implement/02-refac";
   }
-  @GetMapping("/03-implement/07-artifact-assignment")
+
+  @GetMapping("/03-implement/03-artifact-assignment")
   public String restArtifactAssignment() {
-    return "restapi/03-implement/07-artifact-assignment";
+    return "restapi/03-implement/03-artifact-assignment";
   }
-  @GetMapping("/03-implement/08-user-crud")
+
+  @GetMapping("/03-implement/04-user-crud")
   public String restUserCrud() {
-    return "restapi/03-implement/08-user-crud";
+    return "restapi/03-implement/04-user-crud";
   }
-  @GetMapping("/03-implement/09-paging-sorting")
+
+  @GetMapping("/03-implement/05-paging-sorting")
   public String restPagingSorting() {
-    return "restapi/03-implement/09-paging-sorting";
+    return "restapi/03-implement/05-paging-sorting";
+  }
+
+  @GetMapping("/03-implement/06-spec")
+  public String restSpec() {
+    return "restapi/03-implement/06-spec";
   }
 
 

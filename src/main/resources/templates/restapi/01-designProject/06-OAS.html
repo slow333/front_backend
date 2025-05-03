@@ -23,7 +23,35 @@
   </section>
   <section>
     <h2>project 시작</h2>
-    <h3>build.gradle</h3>
+    <h3>spring boot 3 , swagger 적용</h3>
+    <pre>// pom.xml
+      implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    </pre>
+    <pre>// application.yml
+springdoc:
+  api-docs:
+    path: /api-docs
+    swagger-ui:
+      url: /swagger-ui.html
+    enabled: true
+    group-configs:
+      - group: v1
+        packages-to-scan: com.fullstack.backend.controller
+        display-name: v1 API Docs
+    </pre>
+    <h3>CustomOpenApi</h3>
+    <pre>
+      @Bean
+      public OpenAPI customOpenAPI() {
+          return new OpenAPI()
+          .setServers(List.of(new Server()
+                          .url("/")))
+                          .setExternalDocs(new ExternalDocumentation()
+                          .description("JSON Definition")
+                          .url("/swagger.yml"));
+      }
+    </pre>
+    <h3>build.gradle for version 2</h3>
     <pre>
 plugins {
     id 'org.springframework.boot' version '3.0.1'

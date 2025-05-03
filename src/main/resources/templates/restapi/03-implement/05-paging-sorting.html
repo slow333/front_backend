@@ -26,28 +26,27 @@
   <h2>sort 관련해서는 기본 설정 관련해서 추가 설정 필요</h2>
   <pre>
   @GetMapping
-    public Result findAll(
-     @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)
-      Pageable pageable) {
-         // frontend에서 파라미터 변수로 page, size, sort를 받아서 처리할 때는 아래 처럼 해서 처리해야함
-        // findAll(@RequestParam(default=0) int page,
-        //         @RequestParam(default=10) int size,
-        //         @RequestParam(name="sort") List[String] sort)
-         // List[Sort.Order] sorts = List.of(Sort.Order.desc("name"));
-         // pageable = PageRequest.of(0, 2, Sort.by(sorts));
+  public Result findAll(
+   @PageableDefault(page = 0, size = 10, sort = "id",
+          direction = Sort.Direction.DESC) Pageable pageable) {
+      // frontend에서 파라미터 변수로 page, size, sort를 받아서 처리할 때는 아래 처럼 해서 처리해야함
+      // findAll(@RequestParam(default=0) int page,
+      //         @RequestParam(default=10) int size,
+      //         @RequestParam(name="sort") List[String] sort)
+      // List[Sort.Order] sorts = List.of(Sort.Order.desc("name"));
+      // pageable = PageRequest.of(0, 2, Sort.by(sorts));
 
-        Page[Artifact] artifactPage = artifactService.findAll(pageable);
-        Page[ArtifactDto] artifactDtoPage = artifactPage // Page streamable no need stream()
-                .map(artifactToDto::convert);
+      Page[Artifact] artifactPage = artifactService.findAll(pageable);
+      Page[ArtifactDto] artifactDtoPage = artifactPage // Page streamable no need stream()
+              .map(artifactToDto::convert);
 
-        return new Result(true, StatusCode.SUCCESS, "Find all Success", artifactDtoPage);
-    }
+      return new Result(true, StatusCode.SUCCESS, "Find all Success", artifactDtoPage);
+  }
     // service
    public Page[Artifact] findAll(Pageable pageable) {
-//      List[Sort.Order] sorts = new ArrayList[]();
-//      sorts.add(Sort.Order.desc("name"));
-//
-//      pageable = PageRequest.of(0, 2, (Sort) sorts); //위에서 해도되고 여기에 기본값 정의 가능
+    // List[Sort.Order] sorts = new ArrayList[]();
+    // sorts.add(Sort.Order.desc("name"));
+    // pageable = PageRequest.of(0, 2, (Sort) sorts); //위에서 해도되고 여기에 기본값 정의 가능
       return artifactRepository.findAll(pageable);
    }
   </pre>
