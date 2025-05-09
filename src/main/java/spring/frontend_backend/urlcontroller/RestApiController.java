@@ -170,11 +170,6 @@ public class RestApiController {
 
 
 
-
-
-
-
-
   //########## 33장 : 프로젝트에서 공통으로 필요한 구성들 #################
   @GetMapping("/33-common-needs/01-h2db-setting")
   public String commonH2dbSetting() {
@@ -202,5 +197,9 @@ public class RestApiController {
   @GetMapping("/33-common-needs/06-upgrading-spring-boot-version")
   public String commonVersionUpgrade() {
     return "restapi/33-common-needs/06-upgrading-spring-boot-version";
+  }
+  @GetMapping("/33-common-needs/07-command")
+  public String commonCommand() {
+    return "restapi/33-common-needs/07-command";
   }
 }
