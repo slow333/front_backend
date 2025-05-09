@@ -33,7 +33,6 @@ public class RestApiController {
     return "restapi/00-intro/05-intellij-setting";
   }
 
-
 //########## 1장 : 프로젝트 구성 및 설계 방식 #################
   @GetMapping("/01-designProject/01-project-design")
   public String restProjectDesign() {
@@ -59,12 +58,6 @@ public class RestApiController {
   public String restTDD() {
     return "restapi/01-designProject/05-tdd-dev";
   }
-
-  // @GetMapping("/01-designProject/03-OAS")
-  // public String restOAS() {
-  //   return "restapi/01-designProject/06-OAS";
-  // }
-
 
   //########## 2장 : 프로젝트 구성 및 설계 방식 #################
   //########## 3장 : 프로젝트 실제 코딩(TDD) #################
@@ -130,7 +123,12 @@ public class RestApiController {
   public String restPasswordChangeWithRedis() {
     return "restapi/04-spring-security/07-password-change-redis";
   }
+  @GetMapping("/04-spring-security/08-cors-setting")
+  public String restCorsSetting() {
+    return "restapi/04-spring-security/08-cors-setting";
+  }
 
+  
 
   //########## 5장 : 개발후 적용, 클라우드 사용 등 #################
   @GetMapping("/05-deploy/01-packaging-container")
@@ -161,9 +159,6 @@ public class RestApiController {
   public String restClientOpenAI() {
     return "restapi/07-restClient/01-openai";
   }
-
-
-
 
 
 

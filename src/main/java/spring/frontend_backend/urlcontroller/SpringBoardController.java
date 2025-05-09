@@ -8,33 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/spring")
 public class SpringBoardController {
 
-  @GetMapping("/00-setting/sbb-index")
-  public String sbbIndex() {
-    return "spring/00-setting/sbb-index";
-  }
-
-  //########## 0번째 장 : spring boot settings #################
-  @GetMapping("/00-setting/01-about-spring-boot")
-  public String aboutSb() {
-    return "spring/00-setting/01-about-spring-boot";
-  }
-
-  @GetMapping("/00-setting/02-sts-setting")
-  public String stsSetting() {
-    return "spring/00-setting/02-sts-setting";
-  }
-
-  @GetMapping("/00-setting/03-cors-setting")
-  public String coresSetting() {
-    return "spring/00-setting/03-cors-setting";
-  }
-
-  @GetMapping("/00-setting/04-intellij-setting")
-  public String intellijSetting() {
-    return "spring/00-setting/04-intellij-setting";
-  }
-
   //########## 1번째 장: basic project setting #################
+  @GetMapping("/01-basics/00-sbb-index")
+  public String sbbIndex() {
+    return "spring/01-basics/00-sbb-index";
+  }
+
   @GetMapping("/01-basics/00-project-architecture")
   public String projectArchitecture() {
     return "spring/01-basics/00-project-architecture";
