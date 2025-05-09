@@ -21,17 +21,17 @@
     @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class})
     @ExceptionHandler(InvalidBearerTokenException.class)
     @ExceptionHandler(AccessDeniedException.class) // 이거 임포트 할때 조심해야함.io. 뭐 아님
-    // Fallback handles any unhandled exception //
-
+    
     //id, password 없을 때에 대한 예외 처리
     @ExceptionHandler(InsufficientAuthenticationException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     Result handleInsufficientAuthenticationException(InsufficientAuthenticationException ex){
       return new Result(true, StatusCode.UNAUTHORIZED, "Login credentials are missing", ex.getMessage());
     }
+    // Fallback handles any unhandled exception //
   </pre>
   <h3>이상태에서는 controller advice에서 exception을 받지 못함</h3>
-
+  <p>controller에서 도착하기 전에 security에서 애러를 먼저 처리함</p>
   <h2>security exception을 controller advice에서 처리하기</h2>
   <h3>basic authentication에 대해 처리시 AuthenticationEntryPoint에 대한 정의가 필요</h3>
   <pre>

@@ -25,8 +25,7 @@ password               |                                    |                   
     <h3>spring-boot-starter-security, spring-boot-starter-oauth2-resource-server</h3>
     <h3>이상태면 기본 적으로 spring에셔 제공하는 login 창이 보임</h3>
   <h2>Spring Security</h2>
-    <h3>app과 접근하기 위해 사용자 인증을 요구</h3>
-    <h3>app에 접근하기 위한 기본 login form을 생성</h3>
+    <h3>app에 접근하기 위해 사용자 인증을 요구하는 기본 login form을 생성</h3>
     <h3>username "user"인 in-memory user를 생성</h3>
     <h3>form-base authentication을 위해 console에 password를 생성해서 보여줌</h3>
     <h3>이때 새션 유지를 위해 Cookie로 JESSESIONID를 생성함(284728rAFD8239AGD)</h3>
@@ -44,9 +43,10 @@ public class SecurityConfiguration {
       http
         .authorizeHttpRequests(request -> request
              .requestMatchers(HttpMethod.GET, baseUrl + "/artifacts/**").permitAll() // 방법 1. method와 경로를 지정
-             .requestMatchers(HttpMethod.GET, baseUrl + "users/**").hasAuthority("ROLE_admin")
-             .requestMatchers(HttpMethod.POST, baseUrl + "users/**").hasAuthority("ROLE_admin")
-             .requestMatchers(HttpMethod.PUT, baseUrl + "users/**").hasAuthority("ROLE_admin")
+             .requestMatchers(HttpMethod.GET, baseUrl + "/users/**").hasAuthority("ROLE_admin")
+             // /users/** 하면 login도 포함되서 안됨.
+             .requestMatchers(HttpMethod.POST, baseUrl + "/users").hasAuthority("ROLE_admin")
+             .requestMatchers(HttpMethod.PUT, baseUrl + "/users/**").hasAuthority("ROLE_admin")
              .requestMatchers(HttpMethod.DELETE, baseUrl + "users/**").hasAuthority("ROLE_admin")
              .requestMatchers(new AntPathRequestMatcher("/board/**")).permitAll() // 2. 경로에 대해 정의
              .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll() // h2 db 경로 설정
@@ -81,7 +81,7 @@ public class SecurityConfiguration {
     <h3>순서</h3>
     <ol>
         <li>userService(implements UserDetailService) return UserDetails</li>
-        <li>MyUserPrincipal implements UserPrincipal(get authed userInfo)</li>
+        <li>MyUserPrincipal implements UserDetails(get authed userInfo)</li>
         <li>RestControllerAdvice; Exception 추가</li>
         <li>FilterChain; httpBasic 추가</li>
     </ol>
@@ -90,7 +90,7 @@ public class SecurityConfiguration {
         <h4>UserDetails를 implements한 MyUserPrincipal를 생성해야함</h4>
         <h5>나머지는 하고, authorities관련</h5>
   <pre>
-  Arrays.stream(StringUtils.stringToTokenArray(kUser.getRoles(), " "))
+  Arrays.stream(StringUtils.tokenizeToStringArray(kUser.getRoles(), " "))
     .map(role - new SimpleGrantedAuthority("ROLE_" + role)).toList();
   </pre>
         <h4>userRepository에 findByUsername 생성</h4>
@@ -104,6 +104,8 @@ public class SecurityConfiguration {
     <h4>@ResponseStatus(HttpStatus.UNAUTHORIZED) // 실제는 UNAUTHENTICATED</h4>
     <h4>message = "The username or password is invalid."</h4>
     <h3>SecurityFilterChain에 httpBasic(Customizer.withDefaults) 추가</h3>
+    <h2>curl command</h2>
+    <h3>curl -X POST -u admin:321 http://localhost:8080/api/v1/users/login</h3>
 </main>
 </body>
 </html>

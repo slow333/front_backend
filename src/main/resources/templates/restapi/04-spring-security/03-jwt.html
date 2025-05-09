@@ -60,7 +60,7 @@
     private final RSAPrivateKey privateKey;
 
     constructor{
-      keypairGenerator = GenerateKeyPair.getInstance("RSA");
+      keypairGenerator = KeyPairGenerator.getInstance("RSA");
       keypairGenerator.initialize(2048);
       Keypair keypair= keypairGenerator.generateKayPair();
       this.publicKey = (RSAPublicKey) keypair.getPublic();

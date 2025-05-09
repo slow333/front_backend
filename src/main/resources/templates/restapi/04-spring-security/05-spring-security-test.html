@@ -7,16 +7,17 @@
 <main>
 <h1>Test with Spring Security</h1>
   <h2>controller integration test</h2>
+  <h3>org.springframework.boot:spring-boot-starter-test</h3>
+  <h3>org.springframework.security:spring-security-test</h3>
   <pre>
     String token;
     @BeforeEach
     void setup() {
-      // with를 위해서 security test에 dependency 필요(spring-boot-start-security-test)
-      ResultAction r1 = mvcMock.perform(post("/login")).with(httpBasic("id", "password");
-      MvcResult r2 = r1.andDo(print()).andReturn();
-      String r3 = r2.getResponse().getContentAsString();
-      JSONObject r4 = JSONObject(r3);
-      String token = "Bearer " + r4.getJSONObject("data").get("token");
+      ResultActions ra = mockMvc.perform(post(url + "/login").with(httpBasic("admin", "321")));
+      MvcResult result = ra.andDo(print()).andReturn();
+      String response = result.getResponse().getContentAsString();
+      JSONObject jsonObject = new JSONObject(response);
+      this.token = "Bearer " + jsonObject.getJSONObject("data").getString("token");
     }
     // 위 값을 mvcMock에 header("Authorization", token)으로 해서 넣어줌
   </pre>

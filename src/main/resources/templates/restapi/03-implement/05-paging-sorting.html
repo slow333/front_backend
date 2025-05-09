@@ -9,6 +9,8 @@
   <p>url에 path?page=0&size=2&sort=name,desc 처럼 보임</p>
   <p>이를 효율적으로 처리하기 위헤 Spring에서 Pageable 을 제공함</p>
   <p>이를 통해 다양한 페이지 관련 정보를 제공</p>
+  <h3>Repository에 extends JpaRepository[Magic, String],
+    PagingAndSortingRepository[Magic, String] 추가 필요</h3>
   <h2>주로 findAll 처럼 list를 보여주는 method에 적용</h2>
   <pre>
     @GetMapping
@@ -27,6 +29,7 @@
   <pre>
   @GetMapping
   public Result findAll(
+    // 기본 Pageable 설정을 위해 @PageableDefault 사용
    @PageableDefault(page = 0, size = 10, sort = "id",
           direction = Sort.Direction.DESC) Pageable pageable) {
       // frontend에서 파라미터 변수로 page, size, sort를 받아서 처리할 때는 아래 처럼 해서 처리해야함
