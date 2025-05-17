@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/java")
 public class JavaBasicController {
 
+  // ==============================================================================
   // 01 java basic
+  // ==============================================================================
   @GetMapping("/01-basic/00-sts-setting")
   public String javaBasicStsSetting() {
     return "java/01-basic/00-sts-setting";
@@ -34,7 +36,9 @@ public class JavaBasicController {
     return "java/01-basic/05-enum";
   }
 
+  // ==============================================================================
   //02 OOP
+  // ==============================================================================
   @GetMapping("/02-oop/01-oop-intro")
   public String javaOopIntro() {
     return "java/02-oop/01-oop-intro";
@@ -44,7 +48,9 @@ public class JavaBasicController {
     return "java/02-oop/02-oop-1";
   }
 
+  // ==============================================================================
   //03 Advanced
+  // ==============================================================================
   @GetMapping("/03-adv/01-Object")
   public String javaAdvObject() {
     return "java/03-adv/01-Object";

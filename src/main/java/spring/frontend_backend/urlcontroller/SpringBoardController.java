@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/spring")
 public class SpringBoardController {
 
+  // ==============================================================================
   //########## 1번째 장: basic project setting #################
+  // ==============================================================================
   @GetMapping("/01-basics/00-sbb-index")
   public String sbbIndex() {
     return "spring/01-basics/00-sbb-index";
@@ -23,14 +25,17 @@ public class SpringBoardController {
   public String controllerSetting() {
     return "spring/01-basics/01-Controller";
   }
+
   @GetMapping("/01-basics/02-JPA-db")
   public String jpaDb() {
     return "spring/01-basics/02-JPA-db";
   }
+
   @GetMapping("/01-basics/03-entity-db-mapping")
   public String entityDbMapping() {
     return "spring/01-basics/03-entity-db-mapping";
   }
+
   @GetMapping("/01-basics/04-repository-basic")
   public String repositoryBasic() {
     return "spring/01-basics/04-repository-basic";
@@ -45,12 +50,15 @@ public class SpringBoardController {
   public String domainCateorize() {
     return "spring/01-basics/06-domain-categorize";
   }
+
   @GetMapping("/01-basics/07-templates")
   public String setTemplates() {
     return "spring/01-basics/07-templates";
   }
 
+  // ==============================================================================
   //########## 2번째 장: board base pages #################
+  // ==============================================================================
   @GetMapping("/02-board-basic-page/01-question-list")
   public String questionListNote() {
     return "spring/02-board-basic-page/01-question-list";
@@ -81,7 +89,9 @@ public class SpringBoardController {
     return "spring/02-board-basic-page/06-validation";
   }
 
-//########## 3번째 장: advanced #################
+  // ==============================================================================
+  //########## 3번째 장: advanced #################
+  // ==============================================================================
   @GetMapping("/03-board-advanced/01-nav-bar")
   public String navBar() {
     return "spring/03-board-advanced/01-nav-bar";
@@ -112,7 +122,9 @@ public class SpringBoardController {
     return "spring/03-board-advanced/06-login-logout";
   }
 
+  // ==============================================================================
   //########## 4번째 장 : 수정,삭제, 사용자 추가 등 #################
+  // ==============================================================================
   @GetMapping("/04-board-more/01-add-author")
   public String addAuthor() {
     return "spring/04-board-more/01-add-author";
@@ -143,9 +155,9 @@ public class SpringBoardController {
     return "spring/04-board-more/06-search";
   }
 
-
-
+  // ==============================================================================
   //########## 5번째 장 : rest aip #################
+  // ==============================================================================
   @GetMapping("/05-restapi/00-rest-spring-27-setting")
   public String restApiBasicsSetting() {
     return "spring/05-restapi/00-rest-spring-27-setting";
@@ -190,8 +202,9 @@ public class SpringBoardController {
     return "spring/05-restapi/08-rest-error-handler";
   }
 
-
+  // ==============================================================================
   //########## 6번째 장: JSP #################
+  // ==============================================================================
   @GetMapping("/06-JSP/01-settings")
   public String setJSP() {
     return "spring/06-JSP/01-settings";

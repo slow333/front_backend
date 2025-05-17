@@ -95,6 +95,16 @@
     }
   </pre>
   <h2>여기 까지 해야 spring security 와 jwt 간 연동을 통해 권한 설정이 적용됨</h2>
+  <h2>client 에서 요청하기 </h2>
+  <pre>
+  axios.interceptors.request.use(function(config) {
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    },
+    function(error) {
+      Promise.reject(error);
+    });
+  </pre>
 </main>
 </body>
 </html>

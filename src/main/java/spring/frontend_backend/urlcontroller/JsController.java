@@ -7,16 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/js")
 public class JsController {
+  // ==============================================================================
   //########## javascript #################
+  // ==============================================================================
   @GetMapping("/01-intro/01-start")
   public String jsIntroStart() {
     return "js/01-intro/01-start";
   }
+
   @GetMapping("/01-intro/02-docs-env")
   public String jsIntroDocs() {
     return "js/01-intro/02-docs-env";
   }
- //02-기본
+
+  // ==============================================================================
+  //02-기본
+  // ==============================================================================
   @GetMapping("/02-basic/01-basic")
   public String jsBasicStart() {
     return "js/02-basic/01-basic";
@@ -65,7 +71,9 @@ public class JsController {
     return "js/02-basic/11-json";
   }
 
-//  03-함수 심화학습
+  // ==============================================================================
+  //  03-함수 심화학습
+  // ==============================================================================
   @GetMapping("/03-adv/01-recursion-stack")
   public String jsAdvRecursionStack() {
     return "js/03-adv/01-recursion-stack";
@@ -98,7 +106,10 @@ public class JsController {
   public String jsAdvTrayCatch() {
     return "js/03-adv/08-try-catch";
   }
+
+  // ==============================================================================
   // 04-콜백 프라미스
+  // ==============================================================================
   @GetMapping("/04-callback/01-callback")
   public String jsCallbackCallback() {
     return "js/04-callback/01-callback";
@@ -120,7 +131,9 @@ public class JsController {
     return "js/04-callback/05-async-await";
   }
 
+  // ==============================================================================
   // 05-module
+  // ==============================================================================
   @GetMapping("/05-yield-module-etc/01-generator")
   public String jsModuleGenerator() {
     return "js/05-yield-module-etc/01-generator";
@@ -146,7 +159,9 @@ public class JsController {
     return "js/05-yield-module-etc/06-bigint";
   }
 
+  // ==============================================================================
   //06-Object
+  // ==============================================================================
   @GetMapping("/06-object/01-js-object-intro")
   public String jsObjectIntro() {
     return "js/06-object/01-js-object-intro";
@@ -169,7 +184,9 @@ public class JsController {
     return "js/06-object/04-js-json2";
   }
 
+  // ==============================================================================
   //07-async
+  // ==============================================================================
   @GetMapping("/07-async/01-js-async-intro")
   public String jsAsyncIntro() {
     return "js/07-async/01-js-async-intro";
@@ -203,7 +220,9 @@ public class JsController {
     return "js/07-async/08-js-worker";
   }
 
+  // ==============================================================================
   //08-network request
+  // ==============================================================================
   @GetMapping("/08-net-req/01-fetch")
   public String jsNetFetch() {
     return "js/08-net-req/01-fetch";

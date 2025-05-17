@@ -62,6 +62,7 @@ spring:
     username: ${datasource-username:root}
     # run > more action > edit > environment variable : datasource-password=내암호
     password: ${datasource-password:password}
+    driverClassName: org.mariadb.jdbc.Driver
   cloud:
     azure:
       keyvault:

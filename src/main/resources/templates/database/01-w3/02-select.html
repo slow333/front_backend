@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+  <h1>SELECT</h1>
+  <h2>SYNTAX</h2>
+  <pre>
+SELECT column1, column2 FROM table_name;
+</pre>
+  <h2>SELECT DISTINCT; 중복제거</h2>
+  <pre>
+SELECT DISTINCT column1, column2 FROM table_name;
+SELECT Count(DISTINCT column1) FROM table_name;
+</pre>
+  <h2>WHERE</h2>
+  <pre>
+SELECT column1, column2 FROM table_name WHERE condition;
+SELECT * FROM Customers WHERE Country='Mexico' AND email IS NOT NULL;
+SELECT * FROM Customers WHERE Country='Mexico' AND City='Mexico City';
+SELECT * FROM Customers WHERE Country='Mexico' OR Country='USA';
+SELECT * FROM Customers WHERE Country='Mexico' OR country LIKE 'United%';
+SELECT * FROM Customers WHERE CustomerID &lt; 10;
+SELECT * FROM Customers WHERE CustomerID BETWEEN 10 AND 19; // 시작끝 포함
+SELECT * FROM Customers WHERE City IN ('Paris','London');
+</pre>
+<PRE>
+= 	      Equal 	
+>       	Greater than 	
+&lt; 	    Less than 	
+&gt;= 	  Greater than or equal 	
+&lt;= 	  Less than or equal 	
+&lt;&gt; 	Not equal. In some versions of SQL this operator may be written as != 	
+BETWEEN 	Between a certain range 	
+LIKE    	Search for a pattern 	
+IN 	      To specify multiple possible values for a column  
+</PRE>
+  <h2>ORDER BY</h2>
+  <pre>
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+  </pre>
+</main>
+</body>
+</html>

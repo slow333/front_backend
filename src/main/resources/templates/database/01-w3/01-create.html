@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+  <h1>SQL 기본</h1>
+  <h2>MySql 기중으로 함</h2>
+<h1>CREATE</h1>
+<h2>DATABASE</h2>
+<pre>
+  CREATE DATABASE database_name;</pre>
+<h3>DROP DATABASE</h3>
+<pre>
+  DROP DATABASE database_name;</pre>
+  <h3>import file</h3>
+  <pre> // 따움표 없음
+    source /path/to/file.sql;
+  </pre>
+<H2>TABLE</H2>
+<PRe>
+create table customer (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150),
+  address VARCHAR(150) NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  PostalCode VARCHAR(150) NOT NULL,
+  PRIMARY KEY(id)
+);
+insert into customer (name, email, address, country, city, PostalCode) 
+values ('Shara Bohman', null, 'PO DRAWER 789', 'Honduras', 'Santa Lucía', null);
+</PRe>
+<H3>DROP TABLE</H3>
+<PRE>
+  DROP TABLE customer;</PRE>
+</main>
+</body>
+</html>
