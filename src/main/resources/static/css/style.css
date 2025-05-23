@@ -147,6 +147,10 @@ code {
 }
 pre {
   border-left: 1px solid #aaa;
+  border-bottom: 1.5px dotted #888;
+  /* border-bottom-left-radius: 40px; */
+  border-bottom-right-radius: 10px;
+  /* border-bottom-width: 50px; */
 }
 table {
   display: table;

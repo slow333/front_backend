@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+<h1>JOIN</h1>
+<h3>A JOIN clause is used to combine rows from two or more tables, 
+  based on a related column between them.</h3>
+<pre>product의 supplierID와 order_detail의 id를 비교하여 같으면
+  product의 name, order_detail의 price, product의 Unit, order_detail의 created_at을 가져온다.
+SELECT p.name, o.price, p.Unit, o.created_at
+ from product p
+ JOIN order_detail o ON p.supplierID = o.id;</pre>
+ <h2>Different Types of SQL JOINs</h2>
+<ul>
+  <li>INNER JOIN: 두 테이블에서 공통되는 것만(교집합)</li>
+  <li>LEFT (OUTER) JOIN: left table을 모두 반환하고, 조건에 맞는 right table을 추가.</li>
+  <li>RIGHT (OUTER) JOIN: left join과 반대</li>
+  <li>FULL (OUTER) JOIN: left 또는 right table에 있는 모든 records.</li>
+  <li>CROSS JOIN: Returns the Cartesian product of the two tables.</li>
+</ul>
+<table>
+  <tr>
+    <td><img src="/images/inner-join.png" alt="inner join"></td>
+    <td><img src="/images/left-join.png" alt="left join"></td>
+  </tr>
+
+  <tr>
+    <td><img src="/images/right-join.png" alt="right join"></td>
+    <td><img src="/images/full-outer-join.png" alt="full outer join"></td>
+  </tr>
+</table>
+<h2>INNER JOIN: 교집합, JOIN하면 기본으로 적용됨</h2>
+<pre>SELECT p.id, p.name, c.name, od.price
+FROM product p
+INNER JOIN customer c ON p.id = c.id
+INNER JOIN order_detail od ON p.supplierID = od.order_id;</pre>
+<h2>LEFT JOIN; FROM table을 갖다 놓고, 조건에 맞는 LEFT JOIN table 값을 우측에 놓음</h2>
+<pre>SELECT column_names FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;</pre>
+<PRE>SELECT p.id, p.name, c.name
+FROM product p
+LEFT JOIN customer c 
+ON p.supplierID = c.id ORDER BY c.name;</PRE>
+</pre>
+<h3>RIGHT JOIN = RIGHT OUTER JOIN; 기본적으로 table2를 갖다 놓고 조건에 맞는 T1값을 놓음</h3>
+<pre>SELECT column_names FROM table1
+RIGHT JOIN table2 
+ON table1.column_name = table2.column_name</pre>
+<pre>SELECT p.id, p.name, c.name
+FROM product p
+RIGHT JOIN customer c 
+ON p.supplierID = c.id ORDER BY p.id;</pre>
+<h2>mariadb 미지원, FULL JOIN = FULL OUTER JOIN; LEFT JOIN과 RIGHT JOIN을 합친 것</h2>
+<pre>SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name WHERE condition; </pre>
+<h2>UNION; select 값이 둘다 같아야함</h2>
+<h3>returns the cities (only distinct values) 
+  from both the "Customers" and the "Suppliers" table</h3>
+<pre>SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2; </pre>
+<pre>SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;</pre>
+<h2>UNION ALL</h2>
+<pre>SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;</pre>
+</main>
+</body>
+</html>

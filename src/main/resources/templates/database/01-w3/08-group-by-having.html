@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+<h1>GROUP BY AND HAVING</h1>
+<h3>The GROUP BY statement groups rows that have the same values into summary rows, 
+  like "find the number of customers in each country".
+The GROUP BY statement is often used with aggregate functions 
+(COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.</h3>
+<pre>SELECT column_name(s) FROM table_name
+WHERE condition
+GROUP BY column_name(s) ORDER BY column_name(s); </pre>
+<h2>GROUP BY</h2>
+<pre>SELECT COUNT(id), country FROM customer
+  GROUP BY country ORDER BY COUNT(id) DESC;</pre>
+<pre>SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;</pre>
+<h2>HAVING</h2>
+<h3>The HAVING clause was added to SQL 
+  because the WHERE keyword could not be used with aggregate functions.</h3>
+<pre>SELECT column_name(s) FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition ORDER BY column_name(s);</pre>
+<pre>SELECT COUNT(id), Country FROM Customer
+GROUP BY Country
+HAVING COUNT(id) &gt; 15
+ORDER BY COUNT(id) DESC;</pre>
+<pre>SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM (Orders INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) &gt; 10;</pre>
+<pre>SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) &gt; 25;</pre>
+</main>
+</body>
+</html>

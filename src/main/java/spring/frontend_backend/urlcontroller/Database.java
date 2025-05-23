@@ -24,7 +24,35 @@ public class Database {
   public String w3select() {
     return "database/01-w3/02-select";
   }
-
+  @GetMapping("/01-w3/03-insert-update-delete")
+  public String w3InsertUpdateDelete() {
+    return "database/01-w3/03-insert-update-delete";
+  }
+  @GetMapping("/01-w3/04-aggregate")
+  public String w3Aggregate() {
+    return "database/01-w3/04-aggregate";
+  }
+  @GetMapping("/01-w3/05-like-wildcard")
+  public String w3LikeWildcard() {
+    return "database/01-w3/05-like-wildcard";
+  }
+  @GetMapping("/01-w3/06-in-between-alias")
+  public String w3InBetween() {
+    return "database/01-w3/06-in-between-alias";
+  }
+  @GetMapping("/01-w3/07-join")
+  public String w3Join() {
+    return "database/01-w3/07-join";
+  }
+  @GetMapping("/01-w3/08-group-by-having")
+  public String w3GroupByHaving() {
+    return "database/01-w3/08-group-by-having";
+  }
+  @GetMapping("/01-w3/09-exists-any-all")
+  public String w3ExistsAnyAll() {
+    return "database/01-w3/09-exists-any-all";
+  }
+  
   // =====================================================================================
   // ############### 2장: PostgreSQL #################
   // =====================================================================================

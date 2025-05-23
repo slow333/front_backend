@@ -37,14 +37,43 @@ BETWEEN 	Between a certain range
 LIKE    	Search for a pattern 	
 IN 	      To specify multiple possible values for a column  
 </PRE>
+<h3>AND, OR</h3>
+<pre>
+SELECT * FROM customer
+WHERE country = 'Germany' AND (name LIKE 'R%' OR name LIKE 'E%');
+SELECT * FROM Customer
+WHERE City = 'Berlin' OR name LIKE 'G%' OR Country = 'Norway'; </pre>
+<h3>NOT</h3>
+<pre>SELECT * FROM customer WHERE NOT country = 'Germany';
+SELECT * FROM customer WHERE country NOT LIKE 'G%';
+SELECT * FROM customer WHERE id NOT BETWEEN 10 AND 22;
+SELECT * FROM customer WHERE city NOT IN('Paris', 'London');
+SELECT country, city FROM customer WHERE city NOT IN('Paris', 'London', 'Tulle') 
+       AND country NOT IN('Germany', 'France');</pre>
   <h2>ORDER BY</h2>
   <pre>
-SELECT column1, column2, ...
-FROM table_name
-ORDER BY column1, column2, ... ASC|DESC;
-SELECT * FROM Customers
-ORDER BY Country ASC, CustomerName DESC;
-  </pre>
+SELECT column1, column2, ... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
+SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;  
+</pre>
+<h2>NULL</h2>
+<pre>SELECT * FROM Customer WHERE City IS NULL;</pre>
+<pre>SELECT * FROM Customer WHERE City IS NOT NULL;</pre>
+<h2>select top, limit, fetch first</h2>
+<h3>MySQL Syntax:</h3>
+<pre>SELECT column_name(s) FROM table_name WHERE condition
+LIMIT number;</pre>
+<h3>SQL Server / MS Access Syntax:</h3>
+<pre>SELECT TOP number|percent column_name(s) 
+FROM table_name WHERE condition;</pre>
+<h3>Oracle 12 Syntax:</h3>
+<pre>SELECT column_name(s) FROM table_name ORDER BY column_name(s)
+FETCH FIRST number ROWS ONLY;</pre>
+<h3>Older Oracle Syntax:</h3>
+<pre>SELECT column_name(s) FROM table_name 
+WHERE ROWNUM &lt;= number;</pre>
+<h3>Older Oracle Syntax (with ORDER BY):</h3>
+<pre>SELECT * FROM (SELECT column_name(s) FROM table_name ORDER BY column_name(s))
+WHERE ROWNUM &lt;= number;</pre>
 </main>
 </body>
 </html>
