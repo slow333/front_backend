@@ -6,8 +6,11 @@
 <body>
 <main>
 <h1>SELECT INTO; 복사해서 새로운 테이블로 만듦</h1>
-<pre>SELECT * INTO CustomersBackup2017
-  FROM Customers;</pre>
+<pre>-- 이거는 안됨
+SELECT * INTO CustomersBackup2017
+  SELECT * FROM Customers;</pre>
+<pre>-- Primary Key와 Index, Auto Increment는 제외하고 복사.
+  CREATE TABLE b_customer SELECT * FROM customer;</pre>
 </main>
 </body>
 </html>

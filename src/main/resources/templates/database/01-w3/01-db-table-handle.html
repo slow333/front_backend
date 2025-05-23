@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/menu/loadNav.js"></script>
+</head>
+<body>
+<main>
+<h1>DATABASE 생성,삭제 등</h1>
+  <h2>MySql 기준으로 함</h2>
+  <h2>CREATE DATABASE database_name;</h2>
+  <h3>import file</h3>
+  <pre> // 따움표 없음
+    source /path/to/file.sql; </pre>
+
+  <h2>DROP DATABASE database_name;</h2>
+
+  <H2>BACKUP DATABASE database_name TO DISK ='filepath';</H2>
+  <H3>RESTORE DATABASE database_name FROM DISK ='filepath';</H3>
+  <h3>BACKUP DATABASE databasename TO DISK = 'filepath' WITH DIFFERENTIAL;</h3>
+
+<H1>TABLE 생성,삭제 등</H1>
+
+  <h2>CREATE TABLE table_name(column1 datatype, column2 datatype,...)</h2>
+  <h3>EXAMPLES</h3>
+  <pre>create table customer (
+  customerID INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  address VARCHAR(150),
+  country VARCHAR(50) NOT NULL,
+  PostalCode VARCHAR(150) NOT NULL,
+  PRIMARY KEY(customerID)
+);
+insert into customer (name, email, address, country, city, PostalCode) 
+values ('Shara Bohman', null, 'PO DRAWER 789', 'Honduras', 'Santa Lucía', null);
+</pre>
+
+  <h2>CREATE TABLE Using Another Table</h2>
+  <pre>CREATE TABLE new_table_name AS
+  SELECT column1, column2,...
+  FROM existing_table_name
+  WHERE ....; </pre>
+  <pre>CREATE TABLE TestTable AS
+  SELECT customername, contactname FROM customers; </pre>
+
+  <H2>DROP TABLE table_name;</H2>
+  <h2>TRUNCATE TABLE table_name;</h2>
+  <h3>데이터만 지우고 테이블을 그대로 둠</h3>
+
+  <h2>RENAME TABLE</h2>
+  <pre>ALTER TABLE old_table_name RENAME TO new_table_name;</pre>
+  <pre>ALTER TABLE Customers RENAME TO Customers_NEW;</pre>
+
+<h1>ALTER TABLE</h1>
+  <H2>ADD COLUMN</H2>
+  <pre>ALTER TABLE table_name ADD column_name datatype;
+
+  ALTER TABLE Customers ADD Email varchar(255);</pre>
+
+  <h2>DROP COLUMN</h2>
+  <pre>ALTER TABLE table_name DROP COLUMN column_name; 
+
+  ALTER TABLE Customers DROP COLUMN Email;</pre>
+
+  <h2>RENAME COLUMN</h2>
+  <pre>
+ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
+
+  ALTER TABLE Customers RENAME COLUMN Email TO EmailAddress;</pre>
+
+  <h2>MODIFY COLUMN</h2>
+  <pre>ALTER TABLE table_name MODIFY COLUMN column_name datatype;
+
+ALTER TABLE Customers MODIFY COLUMN Email varchar(100);
+ALTER TABLE Customers ALTER COLUMN Email varchar(100);</pre>
+
+
+</main>
+</body>
+</html>
