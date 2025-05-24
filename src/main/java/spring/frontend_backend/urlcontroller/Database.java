@@ -60,9 +60,9 @@ public class Database {
     return "database/01-w3/09-exists-any-all";
   }
 
-  @GetMapping("/01-w3/10-copy-table-insert-select")
-  public String w3CopyTable() {
-    return "database/01-w3/10-copy-table-insert-select";
+  @GetMapping("/01-w3/10-function-and-etc")
+  public String functionsAndEtc() {
+    return "database/01-w3/10-function-and-etc";
   }
   
   // =====================================================================================

@@ -6,65 +6,60 @@
 <body>
 <main>
 <h1>SELECT</h1>
-<h2>SYNTAX</h2>
-  <pre>SELECT column1, column2 FROM table_name;</pre>
-
   <h2>SELECT DISTINCT; 중복제거</h2>
   <pre>SELECT DISTINCT column1, column2 FROM table_name;
 SELECT Count(DISTINCT column1) FROM table_name;</pre>
-
+  <h2>조건 연산자</h2>
+<PRE style="font-size: 1rem;font-weight: bold;">
+=, >, &lt; , &gt;=, &lt;=
+&lt;&gt; 	Not equal. may be written as !=
+BETWEEN   Between a certain range(inclusive)
+LIKE      Search for a pattern(wildcard: %, _)
+IN        To specify multiple possible values for a column
+LIMIT     Used to specify the number of records to return
+OR, AND, NOT
+IS NULL, IS NOT NULL
+</PRE>
 <h2>WHERE</h2>
   <pre>
 SELECT column1, column2 FROM table_name WHERE condition;
+
 SELECT * FROM Customers WHERE Country='Mexico' AND email IS NOT NULL;
 SELECT * FROM Customers WHERE Country='Mexico' AND City='Mexico City';
 SELECT * FROM Customers WHERE Country='Mexico' OR Country='USA';
 SELECT * FROM Customers WHERE Country='Mexico' OR country LIKE 'United%';
 SELECT * FROM Customers WHERE CustomerID &lt; 10;
-SELECT * FROM Customers WHERE CustomerID BETWEEN 10 AND 19; // 시작끝 포함
-SELECT * FROM Customers WHERE City IN ('Paris','London');
-</pre>
-<PRE>
-= 	      Equal 	
->       	Greater than 	
-&lt; 	    Less than 	
-&gt;= 	  Greater than or equal 	
-&lt;= 	  Less than or equal 	
-&lt;&gt; 	Not equal. In some versions of SQL this operator may be written as != 	
-BETWEEN 	Between a certain range 	
-LIKE    	Search for a pattern 	
-IN 	      To specify multiple possible values for a column  
-</PRE>
+-- BETWEEN 시작끝 포함
+SELECT * FROM Customers WHERE CustomerID BETWEEN 10 AND 19; 
+SELECT * FROM Customers WHERE City IN ('Paris','London');</pre>
 
-<h3>AND, OR</h3>
+<h2>AND, OR</h2>
 <pre>
 SELECT * FROM customer
-WHERE country = 'Germany' AND (name LIKE 'R%' OR name LIKE 'E%');
+  WHERE country = 'Germany' AND (name LIKE 'R%' OR name LIKE 'E%');
 SELECT * FROM Customer
-WHERE City = 'Berlin' OR name LIKE 'G%' OR Country = 'Norway'; </pre>
+  WHERE City = 'Berlin' OR name LIKE 'G%' OR Country = 'Norway'; </pre>
 
-<h3>NOT</h3>
-<pre>SELECT * FROM customer WHERE NOT country = 'Germany';
+<h2>NOT</h2>
+<pre>
+SELECT * FROM customer WHERE NOT country = 'Germany';
 SELECT * FROM customer WHERE country NOT LIKE 'G%';
 SELECT * FROM customer WHERE id NOT BETWEEN 10 AND 22;
 SELECT * FROM customer WHERE city NOT IN('Paris', 'London');
 SELECT country, city FROM customer WHERE city NOT IN('Paris', 'London', 'Tulle') 
   AND country NOT IN('Germany', 'France');</pre>
 
+<h2>IN</h2>
+<pre>SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');</pre>
   <h2>ORDER BY</h2>
   <pre>
-SELECT column1, column2, ... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
+SELECT column1, ... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
 SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;  
 </pre>
 
 <h2>NULL</h2>
 <pre>SELECT * FROM Customer WHERE City IS NULL;</pre>
 <pre>SELECT * FROM Customer WHERE City IS NOT NULL;</pre>
-
-<h2>select top, limit, fetch first</h2>
-<h3>MySQL Syntax:</h3>
-<pre>SELECT column_name(s) FROM table_name WHERE condition
-LIMIT number;</pre>
 
 </main>
 </body>
